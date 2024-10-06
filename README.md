@@ -18,7 +18,7 @@ The Auto Driving Simulator is a Python application that simulates the movement o
 To build the Docker image, run the following command in the root directory of the project:
 
 ```sh
-docker-compose build
+docker build - gic-assignment .
 ```
 
 ### Run the Tests
@@ -26,19 +26,19 @@ docker-compose build
 To run the tests and generate a coverage report, use the following command:
 
 ```sh
-docker-compose up
+docker run -it --rm gic-assignment pytest
 ```
 
 ### Run the Application
 
 To run the application, you can use the following commands:
 
-#### Single Car Mode
+#### Single Car Mode (Part 1)
 
 1. Run the Docker container:
 
    ```sh
-   docker run --rm -it auto-driving-simulator
+   docker run -it --rm gic-assignment python main.py
    ```
 
 2. Follow the prompts to enter the grid size, car position, and commands:
@@ -53,12 +53,12 @@ To run the application, you can use the following commands:
    Enter commands: FFRFFFRRLF
    ```
 
-#### Multiple Cars Mode
+#### Multiple Cars Mode (Part 2)
 
 1. Run the Docker container:
 
    ```sh
-   docker run --rm -it auto-driving-simulator
+   docker run -it --rm gic-assignment python main.py
    ```
 
 2. Follow the prompts to enter the grid size, car positions, and commands:
@@ -77,28 +77,3 @@ To run the application, you can use the following commands:
    Enter commands for car B: FFLFFFFFFF
    Enter car identifier (or 'done' to finish): done
    ```
-
-## Sample Inputs
-
-### Single Car Mode
-
-```sh
-Enter mode (1 or 2): 1
-Enter grid dimensions (width height): 10 10
-Enter car position and direction (x y direction): 1 2 N
-Enter commands: FFRFFFRRLF
-```
-
-### Multiple Cars Mode
-
-```sh
-Enter mode (1 or 2): 2
-Enter grid dimensions (width height): 10 10
-Enter car identifier (or 'done' to finish): A
-Enter position and direction for car A (x y direction): 1 2 N
-Enter commands for car A: FFRFFFFRRL
-Enter car identifier (or 'done' to finish): B
-Enter position and direction for car B (x y direction): 7 8 W
-Enter commands for car B: FFLFFFFFFF
-Enter car identifier (or 'done' to finish): done
-```
