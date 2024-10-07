@@ -18,7 +18,7 @@ The Auto Driving Simulator is a Python application that simulates the movement o
 To build the Docker image, run the following command in the root directory of the project:
 
 ```sh
-docker build - gic-assignment .
+docker build -t gic-assignment .
 ```
 
 ### Run the Tests
@@ -33,50 +33,33 @@ docker run -it --rm gic-assignment pytest
 
 To run the application, you can use the following commands:
 
-#### Single Car Mode (Part 1)
-
 1. Run the Docker container:
 
    ```sh
    docker run -it --rm gic-assignment python main.py
    ```
 
-2. Follow the prompts to enter the grid size, car position, and commands:
+2. Input the grid size, car positions, and commands.
 
-   ```sh
-   Select mode:
-   1. Single Car
-   2. Multiple Cars
-   Enter mode (1 or 2): 1
-   Enter grid dimensions (width height): 10 10
-   Enter car position and direction (x y direction): 1 2 N
-   Enter commands: FFRFFFRRLF
-   ```
+    For example, you can use the following input for Part 1 (Single Car):
 
-#### Multiple Cars Mode (Part 2)
+    ```
+    10 10
+    1 2 N
+    FFRFFFRRLF
+    ```
 
-1. Run the Docker container:
+    Or the following input for Part 2 (Multiple Cars):
 
-   ```sh
-   docker run -it --rm gic-assignment python main.py
-   ```
-
-2. Follow the prompts to enter the grid size, car positions, and commands:
-
-   ```sh
-   Select mode:
-   1. Single Car
-   2. Multiple Cars
-   Enter mode (1 or 2): 2
-   Enter grid dimensions (width height): 10 10
-   Enter car identifier (or 'done' to finish): A
-   Enter position and direction for car A (x y direction): 1 2 N
-   Enter commands for car A: FFRFFFFRRL
-   Enter car identifier (or 'done' to finish): B
-   Enter position and direction for car B (x y direction): 7 8 W
-   Enter commands for car B: FFLFFFFFFF
-   Enter car identifier (or 'done' to finish): done
-   ```
+    ```
+    10 10
+    A
+    1 2 N
+    FFRFFFFRRL
+    B
+    7 8 W
+    FFLFFFFFFF
+    ```
 
 ### Setup Locally
 
