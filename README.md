@@ -6,10 +6,70 @@ The Auto Driving Simulator is a Python application that simulates the movement o
 
 ## Features
 
-- Single Car Mode: Simulate the movement of a single car on a grid.
-- Multiple Cars Mode: Simulate the movement of multiple cars on a grid with collision detection.
-- Command Line Interface: Interactive input for grid size, car positions, and commands.
+- Part 1: Simulate the movement of a single car on a grid.
+- Part 2: Simulate the movement of multiple cars on a grid with collision detection.
 - Dockerized: Easily build and run the application using Docker.
+
+## Design
+
+The Auto Driving Simulator is designed using several object-oriented design principles and patterns to ensure modularity, flexibility, and maintainability. Below is a table summarizing the key classes and the design patterns they implement:
+
+| Class/Module | Description| Design Pattern(s) Implemented |
+|---|---|---|
+| `Car`                                 | Represents a car with its position, direction, and commands.                | Data Class                             |
+| `CollisionHandler`                    | Handles collision detection using a specified strategy.                     | Strategy Pattern                       |
+| `CollisionStrategy`                   | Abstract base class for collision detection strategies.                     | Strategy Pattern                       |
+| `SimpleCollisionStrategy`             | A simple implementation of collision detection strategy.                    | Strategy Pattern                       |
+| `BaseCommand`                         | Abstract base class for commands that can be executed by a car.             | Command Pattern                        |
+| `MoveForwardCommand`                  | Command to move the car forward.                                            | Command Pattern                        |
+| `RotateLeftCommand`                   | Command to rotate the car to the left.                                      | Command Pattern                        |
+| `RotateRightCommand`                  | Command to rotate the car to the right.                                     | Command Pattern                        |
+| `CommandFactory`                      | Factory class to create command instances based on a given command string.  | Factory Pattern                        |
+| `CollisionEvent`                      | Represents a collision event with details about the collision.              | Data Class                             |
+| `Grid`                                | Represents the grid on which cars move.                                     | Data Class                             |
+| `InputParser`                         | Parses input to create grid, car, and command instances.                    | -                                      |
+| `MultiCarSimulator`                   | Simulates the movement of multiple cars on the grid with collision detection.| -                                      |
+| `SingleCarSimulator`                  | Simulates the movement of a single car on the grid.                         | -                                      |
+| `Direction`                           | Enum representing the direction of the car and provides movement utilities. | Enum, Utility Class                    |
+
+### Design Patterns Explained
+
+1. **Strategy Pattern**:
+   - Allows the algorithm to be selected at runtime.
+   - Example: `CollisionHandler` uses `CollisionStrategy` to detect collisions. `SimpleCollisionStrategy` is one implementation of this strategy.
+
+2. **Command Pattern**:
+   - Encapsulates a request as an object, thereby allowing for parameterization of clients with queues, requests, and operations.
+   - Examples: `BaseCommand` and its subclasses (`MoveForwardCommand`, `RotateLeftCommand`, `RotateRightCommand`).
+
+3. **Factory Pattern**:
+   - Provides an interface for creating objects in a superclass but allows subclasses to alter the type of objects that will be created.
+   - Example: `CommandFactory` creates command instances based on a given command string.
+
+4. **Enum**:
+   - Represents a fixed set of constants.
+   - Example: `Direction` enum represents the four possible directions (NORTH, EAST, SOUTH, WEST).
+
+### Class Interactions
+
+- **Car**:
+  - Holds its position, direction, and a list of commands.
+  - Uses `Direction` for movement and rotation.
+  - Executes commands using instances of `BaseCommand`.
+
+- **CollisionHandler**:
+  - Detects collisions using a specified `CollisionStrategy`.
+  - Can be configured with different strategies like `SimpleCollisionStrategy`.
+
+- **Simulators**:
+  - `SingleCarSimulator` and `MultiCarSimulator` handle the simulation of car movements.
+  - `MultiCarSimulator` also handles collision detection using `CollisionHandler`.
+
+- **InputParser**:
+  - Parses input to create instances of `Grid`, `Car`, and commands.
+  - Uses `CommandFactory` to create command instances.
+
+This design ensures that the simulator is modular, making it easy to extend and maintain. For example, new collision detection strategies can be added without modifying the existing `CollisionHandler` class. Similarly, new commands can be added by extending the `BaseCommand` class and updating the `CommandFactory`.
 
 ## Getting Started
 
@@ -47,6 +107,7 @@ To run the application, you can use the following commands:
     10 10
     1 2 N
     FFRFFFRRLF
+
     ```
 
     Or the following input for Part 2 (Multiple Cars):
@@ -59,6 +120,7 @@ To run the application, you can use the following commands:
     B
     7 8 W
     FFLFFFFFFF
+
     ```
 
 ### Setup Locally
