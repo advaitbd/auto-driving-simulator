@@ -44,10 +44,17 @@ def main():
 
                 input_lines.extend([identifier, car_line, commands_line])
 
+            # InputParser will parse the input lines and return the initialised grid and a list of cars
             grid, cars = InputParser.parse_multiple_cars_input(input_lines)
+
+            # We will use the SimpleCollisionStrategy for this example, but we can use different strategies too
+            # While SimpleCollisionStrategy just stops the cars, we can implement a different strategy to handle collisions
+
             collision_strategy = SimpleCollisionStrategy()
             collision_handler = CollisionHandler(collision_strategy)
+
             simulator = MultiCarSimulator(grid, cars, collision_handler)
+
             collision_event = simulator.simulate()
             if collision_event:
                 print(f"Collision detected: {collision_event}")
