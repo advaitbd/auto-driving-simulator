@@ -36,4 +36,3 @@ class CollisionHandler:
             Optional[CollisionEvent]: A CollisionEvent if a collision is detected, otherwise None.
         """
         return self.strategy.detect_collisions(positions, step)
-```
