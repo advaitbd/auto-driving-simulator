@@ -30,10 +30,9 @@ def main():
             simulator = MultiCarSimulator(grid, cars, collision_handler)
             collision_event = simulator.simulate()
 
-            car_identifiers = " ".join(car.identifier for car in cars)
-
             if collision_event:
-                print(car_identifiers)
+                collided_cars = " ".join(collision_event.collided_cars)
+                print(f"{collided_cars}")
                 print(f"{collision_event.position[0]} {collision_event.position[1]}")
                 print(f"{collision_event.step}")
             else:
