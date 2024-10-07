@@ -10,9 +10,25 @@ The Auto Driving Simulator is a Python application that simulates the movement o
 - Part 2: Simulate the movement of multiple cars on a grid with collision detection.
 - Dockerized: Easily build and run the application using Docker.
 
+## Assumptions
+
+- **Grid Size**:
+  - The grid size is assumed to be positive integers.
+  - Commands that move the car outside the grid are ignored.
+
+- **Car Position**:
+  - Cars are allowed to move to any position on the grid, even if there are other cars present.
+
+- **Collision Detection**:
+  - Cars are considered to have collided if they occupy the same position at any point in time.
+
+- **Directions**:
+  - The car can only face four directions: North, East, South, and West.
+  - The car can rotate 90 degrees to the left or right.
+
 ## Design
 
-The Auto Driving Simulator is designed using several object-oriented design principles and patterns to ensure modularity, flexibility, and maintainability. Below is a table summarizing the key classes and the design patterns they implement:
+The Auto Driving Simulator is designed to ensure modularity, flexibility, and maintainability. Below is a table summarizing the key classes and the design patterns they implement:
 
 | Class/Module | Description| Design Pattern(s) Implemented |
 |---|---|---|
