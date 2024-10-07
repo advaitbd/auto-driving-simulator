@@ -77,3 +77,22 @@ To run the application, you can use the following commands:
    Enter commands for car B: FFLFFFFFFF
    Enter car identifier (or 'done' to finish): done
    ```
+
+### Setup Locally
+
+To set up the project locally, follow these steps:
+
+1. Setup your virtual env and install the required packages:
+
+   ```sh
+   python3 -m venv venv
+   source venv/bin/activate
+   pip install -e .
+   pip install -r requirements.txt
+   ```
+
+2. Run the application:
+
+   ```sh
+   python main.py
+   ```

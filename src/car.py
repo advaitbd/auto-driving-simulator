@@ -21,10 +21,4 @@ class Car:
         Returns:
             tuple: A tuple containing the x-coordinate, y-coordinate, and direction as a string.
         """
-        direction_str = {
-            Direction.NORTH: "N",
-            Direction.EAST: "E",
-            Direction.SOUTH: "S",
-            Direction.WEST: "W",
-        }[self.direction]
-        return self.x, self.y, direction_str
+        return self.x, self.y, self.direction.to_string()
