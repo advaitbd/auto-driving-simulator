@@ -7,6 +7,16 @@ from src.collision_strategies.collision_strategy import CollisionStrategy
 
 class SimpleCollisionStrategy(CollisionStrategy):
     def detect_collisions(self, positions: Dict[str, tuple], step: int) -> Optional[CollisionEvent]:
+        """
+        Detects collisions based on the positions of cars.
+
+        Args:
+            positions (Dict[str, tuple]): A dictionary mapping car identifiers to their positions (x, y).
+            step (int): The current simulation step.
+
+        Returns:
+            Optional[CollisionEvent]: A CollisionEvent if a collision is detected, otherwise None.
+        """
         position_to_cars = defaultdict(list)
         for car_id, pos in positions.items():
             position_to_cars[pos].append(car_id)
